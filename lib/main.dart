@@ -25,12 +25,19 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
-        child: SafeArea(child: Container()),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
+      ),
+      child: const SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Text(
+            '仮です',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
     );
   }
