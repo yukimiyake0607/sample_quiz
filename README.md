@@ -1,3 +1,6 @@
 # sample_quiz
 
-A new Flutter project.
+flutter　練習用フォルダ
+確認事項
+・クラス利用
+　→プロパティ、メソッド
