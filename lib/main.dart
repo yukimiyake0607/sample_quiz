@@ -61,7 +61,11 @@ class _QuizPageState extends State<QuizPage> {
                       child: SizedBox(
                         width: double.infinity,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              quizBrain.nextQuiz();
+                            });
+                          },
                           style: TextButton.styleFrom(
                             backgroundColor: Colors.red,
                             shape: const RoundedRectangleBorder(
@@ -88,7 +92,11 @@ class _QuizPageState extends State<QuizPage> {
                       child: SizedBox(
                         width: double.infinity,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                quizBrain.nextQuiz();
+                              });
+                            },
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.blue,
                                 shape: const RoundedRectangleBorder(

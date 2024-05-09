@@ -1,7 +1,7 @@
 import 'package:sample_quiz/quiz.dart';
 
 class QuizBrain {
-  final int _quizNumber = 0;
+  int _quizNumber = 0;
 
   List<Quiz> quizText = [
     Quiz(quizTitle: '出身地は？', quizAnswer1: '岐阜', quizAnswer2: '富山'),
@@ -13,7 +13,10 @@ class QuizBrain {
     Quiz(quizTitle: '趣味は？', quizAnswer1: '読書', quizAnswer2: '筋トレ'),
     Quiz(quizTitle: '最近ハマっている小説ジャンルは？', quizAnswer1: 'ミステリ', quizAnswer2: '恋愛'),
     Quiz(quizTitle: '使っているPCは？', quizAnswer1: 'MAC', quizAnswer2: 'Windows'),
-    Quiz(quizTitle: '最近ハマっているアパレルブランドは？', quizAnswer1: 'Traditional Weather Wear', quizAnswer2: 'Mackintosh'),
+    Quiz(
+        quizTitle: '最近ハマっているアパレルブランドは？',
+        quizAnswer1: 'Traditional Weather Wear',
+        quizAnswer2: 'Mackintosh'),
   ];
 
   String getTitle() {
@@ -26,5 +29,9 @@ class QuizBrain {
 
   String getAnswer2() {
     return quizText[_quizNumber].quizAnswer2;
+  }
+
+  void nextQuiz() {
+    _quizNumber++;
   }
 }
