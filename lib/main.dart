@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sample_quiz/quiz_brain.dart';
 
 void main() {
   runApp(const MainApp());
 }
+
+QuizBrain quizBrain = QuizBrain();
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -40,13 +43,13 @@ class _QuizPageState extends State<QuizPage> {
               child: Center(
                 child: Column(
                   children: [
-                    const Expanded(
+                    Expanded(
                       flex: 16,
                       child: Center(
                         child: Text(
-                          '問題文',
+                          quizBrain.getTitle(),
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 30,
                               fontWeight: FontWeight.bold),
@@ -67,9 +70,9 @@ class _QuizPageState extends State<QuizPage> {
                               ),
                             ),
                           ),
-                          child: const Text(
-                            '選択肢1',
-                            style: TextStyle(
+                          child: Text(
+                            quizBrain.getAnswer1(),
+                            style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
@@ -93,9 +96,9 @@ class _QuizPageState extends State<QuizPage> {
                                     Radius.circular(0),
                                   ),
                                 )),
-                            child: const Text(
-                              '選択肢2',
-                              style: TextStyle(
+                            child: Text(
+                              quizBrain.getAnswer2(),
+                              style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
