@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:sample_quiz/quiz.dart';
 
 class QuizBrain {
@@ -21,7 +19,7 @@ class QuizBrain {
         quizAnswer2: 'Mackintosh'),
   ];
 
-  List<String> answerBrain = [
+  final List<String> _answerBrain = [
     '岐阜',
     '大垣南高校',
     '野球部',
@@ -30,7 +28,8 @@ class QuizBrain {
     'ポールスミス',
     '読書',
     '恋愛',
-    'Mac'
+    'Mac',
+    'Traditional Weather Wear'
   ];
 
   String getTitle() {
@@ -47,5 +46,9 @@ class QuizBrain {
 
   void nextQuiz() {
     _quizNumber++;
+  }
+
+  String getCorrectAnswer() {
+    return _answerBrain[_quizNumber];
   }
 }
