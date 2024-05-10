@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sample_quiz/quiz_brain.dart';
 
 void main() {
@@ -28,6 +26,37 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  // プロパティ
+  List<Widget> checkedList = [];
+
+  // メソッド
+  void checkedAnswer() {
+    checkedList.add(
+      const Icon(Icons.check, color: Colors.green),
+    );
+  }
+
+  void closedAnswer() {
+    checkedList.add(
+      const Icon(Icons.close, color: Colors.red),
+    );
+  }
+
+  void quizEvaluation(String answer) {
+    String correctAnswer = quizBrain.getCorrectAnswer();
+
+    setState(() {
+      quizBrain.nextQuiz();
+
+      //if
+      if (correctAnswer == answer) {
+        checkedAnswer();
+      } else {
+        closedAnswer();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,9 +91,8 @@ class _QuizPageState extends State<QuizPage> {
                         width: double.infinity,
                         child: TextButton(
                           onPressed: () {
-                            setState(() {
-                              quizBrain.nextQuiz();
-                            });
+                            String getAnswer1 = quizBrain.getAnswer1();
+                            quizEvaluation(getAnswer1);
                           },
                           style: TextButton.styleFrom(
                             backgroundColor: Colors.red,
@@ -93,9 +121,8 @@ class _QuizPageState extends State<QuizPage> {
                         width: double.infinity,
                         child: TextButton(
                             onPressed: () {
-                              setState(() {
-                                quizBrain.nextQuiz();
-                              });
+                              String getAnswer2 = quizBrain.getAnswer2();
+                              quizEvaluation(getAnswer2);
                             },
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.blue,
@@ -112,6 +139,9 @@ class _QuizPageState extends State<QuizPage> {
                                   color: Colors.white),
                             )),
                       ),
+                    ),
+                    Row(
+                      children: checkedList,
                     )
                   ],
                 ),
