@@ -3,7 +3,7 @@ import 'package:sample_quiz/quiz.dart';
 class QuizBrain {
   int _quizNumber = 0;
 
-  List<Quiz> quizText = [
+  final List<Quiz> _quizText = [
     Quiz(quizTitle: '出身地は？', quizAnswer1: '岐阜', quizAnswer2: '富山'),
     Quiz(quizTitle: '出身高校は？', quizAnswer1: '大垣南高校', quizAnswer2: '大垣東高校'),
     Quiz(quizTitle: '中学時代の部活は？', quizAnswer1: '陸上部', quizAnswer2: '野球部'),
