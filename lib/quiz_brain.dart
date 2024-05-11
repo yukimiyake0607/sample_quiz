@@ -33,22 +33,42 @@ class QuizBrain {
   ];
 
   String getTitle() {
-    return quizText[_quizNumber].quizTitle;
+    return _quizText[_quizNumber].quizTitle;
   }
 
   String getAnswer1() {
-    return quizText[_quizNumber].quizAnswer1;
+    return _quizText[_quizNumber].quizAnswer1;
   }
 
   String getAnswer2() {
-    return quizText[_quizNumber].quizAnswer2;
+    return _quizText[_quizNumber].quizAnswer2;
   }
 
   void nextQuiz() {
-    _quizNumber++;
+    if (_quizNumber >= _quizText.length - 1) {
+      _quizNumber = 0;
+    } else {
+      _quizNumber++;
+    }
   }
 
   String getCorrectAnswer() {
     return _answerBrain[_quizNumber];
   }
+
+  bool finished() {
+    if (_quizNumber == quizText.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void reset() {
+    _quizNumber = 0;
+  }
+
+  // getter
+  int get quizNumber => _quizNumber;
+  List<Quiz> get quizText => _quizText;
 }
