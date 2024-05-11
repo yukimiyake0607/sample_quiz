@@ -42,17 +42,62 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
+  void alert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('終了です'),
+          content: Text('メッセージ'),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop;
+                },
+                child: Text('OK')),
+          ],
+        );
+      },
+    );
+  }
+
   void quizEvaluation(String answer) {
     String correctAnswer = quizBrain.getCorrectAnswer();
 
     setState(() {
-      quizBrain.nextQuiz();
-
+      if (quizBrain.finished() == true) {
+        quizBrain.reset();
+        checkedList = [];
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text(
+                '終了です',
+                textAlign: TextAlign.center,
+              ),
+              content: const Text('お疲れ様でした', textAlign: TextAlign.center),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'OK',
+                    )),
+              ],
+            );
+          },
+        );
+        return;
+      }
       //if
       if (correctAnswer == answer) {
         checkedAnswer();
+        quizBrain.nextQuiz();
       } else {
         closedAnswer();
+        quizBrain.nextQuiz();
       }
     });
   }
